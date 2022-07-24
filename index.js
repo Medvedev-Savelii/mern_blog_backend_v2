@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
+const authRoute = require("./routes/auth");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const chalk = require("chalk");
 const multer = require("multer");
 const path = require("path");
+///////////////////////////////////////////////////////
 
 app.use(express.static(path.join(__dirname, "/images")));
 app.use(express.json());
@@ -32,5 +34,7 @@ const start = async () => {
     console.error(error);
   }
 };
+
+app.use("/api/auth", authRoute);
 
 start();
